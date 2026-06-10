@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,12 +10,20 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"/>
+        android:background="@color/background"
+        app:titleTextColor="@color/textColor"
+        app:navigationIcon="@drawable/ic_back"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_light"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/gray_light">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cart"
@@ -28,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Your cart is empty"
+            android:text="🛒  Your cart is empty"
             android:textSize="16sp"
             android:textColor="@color/gray_medium"
             android:visibility="gone"/>
@@ -43,15 +52,36 @@
         android:background="@color/background"
         android:elevation="8dp">
 
-        <TextView
-            android:id="@+id/tv_total"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light"
+            android:layout_marginBottom="12dp"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Total: $0.00"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/textColor"
-            android:layout_marginBottom="12dp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total"
+                android:textSize="16sp"
+                android:textColor="@color/textColor"/>
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#288B57"/>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_checkout"
@@ -59,8 +89,11 @@
             android:layout_height="52dp"
             android:text="Proceed to Checkout"
             android:textSize="16sp"
-            android:backgroundTint="#1A1A1A"
-            android:textColor="@color/buttonTextColor"/>
+            android:textStyle="bold"
+            android:backgroundTint="#288B57"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="26dp"
+            android:stateListAnimator="@null"/>
 
     </LinearLayout>
 

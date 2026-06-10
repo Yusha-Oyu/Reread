@@ -1,5 +1,6 @@
 package com.reread.app.ui.home
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.reread.app.R
 import com.reread.app.data.Book
 import java.io.File
-import coil.load
 
 class BookAdapter(
     private val onBookClick: (Book) -> Unit
@@ -28,32 +28,71 @@ class BookAdapter(
     }
 
     inner class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tvTitle: TextView = itemView.findViewById(R.id.tv_book_title)
-        private val tvAuthor: TextView = itemView.findViewById(R.id.tv_book_author)
-        private val tvPrice: TextView = itemView.findViewById(R.id.tv_book_price)
+        private val tvTitle: TextView     = itemView.findViewById(R.id.tv_book_title)
+        private val tvAuthor: TextView    = itemView.findViewById(R.id.tv_book_author)
+        private val tvPrice: TextView     = itemView.findViewById(R.id.tv_book_price)
         private val tvCondition: TextView = itemView.findViewById(R.id.tv_book_condition)
-        private val tvCategory: TextView = itemView.findViewById(R.id.tv_book_category)
-        private val tvSeller: TextView = itemView.findViewById(R.id.tv_book_seller)
-        private val ivImage: ImageView = itemView.findViewById(R.id.iv_book_image)
+        private val tvCategory: TextView  = itemView.findViewById(R.id.tv_book_category)
+        private val tvSeller: TextView    = itemView.findViewById(R.id.tv_book_seller)
+        private val ivCover: ImageView    = itemView.findViewById(R.id.iv_book_cover)
+        private val tvPlaceholder: View   = itemView.findViewById(R.id.tv_book_placeholder)
 
         fun bind(book: Book) {
-            tvTitle.text = book.title
-            tvAuthor.text = book.author
-            tvPrice.text = "$${String.format("%.2f", book.price)}"
+            tvTitle.text     = book.title
+            tvAuthor.text    = book.author
+            tvPrice.text     = "\$${String.format("%.2f", book.price)}"
             tvCondition.text = book.condition
-            tvCategory.text = book.category
-            tvSeller.text = "Sold by ${book.sellerUsername}"
-            itemView.setOnClickListener { onBookClick(book) }
-            val path = book.imagePath.trim()
-            if (path.isNotEmpty()) {
-                ivImage.load(File(path)) {
-                    placeholder(R.drawable.placeholder_image)
-                    error(R.drawable.placeholder_image)
+            tvCategory.text  = book.category
+            tvSeller.text    = "by ${book.sellerUsername}"
+
+            // Color code condition badge
+            val conditionColor = when (book.condition) {
+                "New"      -> android.graphics.Color.parseColor("#1B5E20")
+                "Like New" -> android.graphics.Color.parseColor("#288B57")
+                "Good"     -> android.graphics.Color.parseColor("#F57F17")
+                "Fair"     -> android.graphics.Color.parseColor("#E65100")
+                "Poor"     -> android.graphics.Color.parseColor("#B71C1C")
+                else       -> android.graphics.Color.parseColor("#288B57")
+            }
+            tvCondition.backgroundTintList =
+                android.content.res.ColorStateList.valueOf(conditionColor)
+
+            // Load image
+            if (book.imagePath.isNotBlank()) {
+                try {
+                    if (book.imagePath.startsWith("drawable:")) {
+                        val drawableName = book.imagePath.removePrefix("drawable:")
+                        val resId = itemView.context.resources.getIdentifier(
+                            drawableName, "drawable", itemView.context.packageName
+                        )
+                        if (resId != 0) {
+                            ivCover.setImageResource(resId)
+                            ivCover.visibility       = View.VISIBLE
+                            tvPlaceholder.visibility = View.GONE
+                        } else {
+                            ivCover.visibility       = View.GONE
+                            tvPlaceholder.visibility = View.VISIBLE
+                        }
+                    } else {
+                        val file = File(book.imagePath)
+                        if (file.exists()) {
+                            ivCover.setImageURI(Uri.fromFile(file))
+                        } else {
+                            ivCover.setImageURI(Uri.parse(book.imagePath))
+                        }
+                        ivCover.visibility       = View.VISIBLE
+                        tvPlaceholder.visibility = View.GONE
+                    }
+                } catch (e: Exception) {
+                    ivCover.visibility       = View.GONE
+                    tvPlaceholder.visibility = View.VISIBLE
                 }
             } else {
-                ivImage.scaleType = ImageView.ScaleType.CENTER_CROP
-                ivImage.load(R.drawable.placeholder_image)
+                ivCover.visibility       = View.GONE
+                tvPlaceholder.visibility = View.VISIBLE
             }
+
+            itemView.setOnClickListener { onBookClick(book) }
         }
     }
 
@@ -62,5 +101,3 @@ class BookAdapter(
         override fun areContentsTheSame(oldItem: Book, newItem: Book) = oldItem == newItem
     }
 }
-
-

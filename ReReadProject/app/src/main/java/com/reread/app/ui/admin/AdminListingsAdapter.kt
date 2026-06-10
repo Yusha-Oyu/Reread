@@ -11,6 +11,7 @@ import com.reread.app.data.Book
 
 class AdminListingsAdapter(
     private val listings: MutableList<Book>,
+    private val onEdit: (Book) -> Unit,
     private val onDelete: (Book) -> Unit
 ) : RecyclerView.Adapter<AdminListingsAdapter.ViewHolder>() {
 
@@ -32,6 +33,7 @@ class AdminListingsAdapter(
         private val tvPrice: TextView    = itemView.findViewById(R.id.tv_admin_book_price)
         private val tvSeller: TextView   = itemView.findViewById(R.id.tv_admin_book_seller)
         private val tvCategory: TextView = itemView.findViewById(R.id.tv_admin_book_category)
+        private val btnEdit: Button      = itemView.findViewById(R.id.btn_edit_listing)
         private val btnRemove: Button    = itemView.findViewById(R.id.btn_remove_listing)
 
         fun bind(book: Book) {
@@ -40,6 +42,7 @@ class AdminListingsAdapter(
             tvPrice.text    = "\$${String.format("%.2f", book.price)}"
             tvSeller.text   = "Seller: ${book.sellerUsername}"
             tvCategory.text = book.category
+            btnEdit.setOnClickListener   { onEdit(book) }
             btnRemove.setOnClickListener { onDelete(book) }
         }
     }

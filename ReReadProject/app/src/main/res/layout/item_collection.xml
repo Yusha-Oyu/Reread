@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    android:background="@color/background"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="12dp"
+        android:background="@color/background"
         android:gravity="center_vertical">
 
         <TextView
@@ -37,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="15sp"
-                android:textColor="@color/black"
+                android:textColor="@color/textColor"
                 android:maxLines="2"
                 android:ellipsize="end"/>
 
@@ -62,19 +63,20 @@
                     android:layout_weight="1"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="#288B57"/>
 
                 <TextView
                     android:id="@+id/tv_col_condition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="11sp"
-                    android:textColor="@color/gray_medium"
-                    android:background="@color/labelColor"
+                    android:textColor="@color/textColor"
+                    android:background="@color/gray_light"
                     android:paddingStart="6dp"
                     android:paddingEnd="6dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"/>
+
             </LinearLayout>
 
             <TextView

@@ -23,14 +23,14 @@ class MessagingRepository(context: Context) {
         if (existing != -1) return existing
 
         val values = ContentValues().apply {
-            put("book_id", bookId)
-            put("book_title", bookTitle)
-            put("buyer_id", buyerId)
-            put("buyer_username", buyerUsername)
-            put("seller_id", sellerId)
-            put("seller_username", sellerUsername)
-            put("last_message", "")
-            put("last_message_at", System.currentTimeMillis())
+            put("book_id",          bookId)
+            put("book_title",       bookTitle)
+            put("buyer_id",         buyerId)
+            put("buyer_username",   buyerUsername)
+            put("seller_id",        sellerId)
+            put("seller_username",  sellerUsername)
+            put("last_message",     "")
+            put("last_message_at",  System.currentTimeMillis())
         }
         return db.insert("conversations", null, values).toInt()
     }
@@ -49,15 +49,16 @@ class MessagingRepository(context: Context) {
         val now = System.currentTimeMillis()
         val values = ContentValues().apply {
             put("conversation_id", conversationId)
-            put("sender_id", senderId)
+            put("sender_id",       senderId)
             put("sender_username", senderUsername)
-            put("content", content)
-            put("sent_at", now)
+            put("content",         content)
+            put("sent_at",         now)
+            put("is_read",         0)
         }
         db.insert("messages", null, values)
 
         val update = ContentValues().apply {
-            put("last_message", content)
+            put("last_message",    content)
             put("last_message_at", now)
         }
         db.update("conversations", update, "id = ?", arrayOf(conversationId.toString()))
@@ -69,6 +70,23 @@ class MessagingRepository(context: Context) {
             arrayOf(conversationId.toString())
         )
         return cursor.use { it.toMessageList() }
+    }
+
+    fun getUnreadCount(conversationId: Int, currentUserId: Int): Int {
+        val cursor = db.rawQuery(
+            "SELECT COUNT(*) FROM messages WHERE conversation_id = ? AND sender_id != ? AND is_read = 0",
+            arrayOf(conversationId.toString(), currentUserId.toString())
+        )
+        return cursor.use { if (it.moveToFirst()) it.getInt(0) else 0 }
+    }
+
+    fun markMessagesAsRead(conversationId: Int, currentUserId: Int) {
+        val values = ContentValues().apply { put("is_read", 1) }
+        db.update(
+            "messages", values,
+            "conversation_id = ? AND sender_id != ? AND is_read = 0",
+            arrayOf(conversationId.toString(), currentUserId.toString())
+        )
     }
 
     private fun Cursor.toConversationList(): List<Conversation> {

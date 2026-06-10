@@ -33,6 +33,25 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun loadBooksForUser(preferredGenres: List<String>) {
+        _isLoading.value = true
+        viewModelScope.launch(Dispatchers.IO) {
+            val allBooks = repo.getAllBooks()
+            val preferred = allBooks.filter { book ->
+                preferredGenres.any { genre ->
+                    book.category.equals(genre, ignoreCase = true)
+                }
+            }
+            val others = allBooks.filter { book ->
+                preferredGenres.none { genre ->
+                    book.category.equals(genre, ignoreCase = true)
+                }
+            }
+            _books.postValue(preferred + others)
+            _isLoading.postValue(false)
+        }
+    }
+
     fun search(query: String) {
         _isLoading.value = true
         viewModelScope.launch(Dispatchers.IO) {

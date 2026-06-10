@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.ReRead" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+    <style name="Theme.ReRead" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#1A1A1A</item>
         <item name="colorPrimaryVariant">#333333</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorSecondary">#555555</item>
         <item name="colorOnSecondary">#FFFFFF</item>
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:statusBarColor">@android:color/white</item>
     </style>
 
     <style name="Theme.ReRead.NoActionBar" parent="Theme.ReRead">

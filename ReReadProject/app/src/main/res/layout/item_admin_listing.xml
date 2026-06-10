@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="12dp"
+        android:background="@color/background"
         android:gravity="center_vertical">
 
         <LinearLayout
@@ -27,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="14sp"
-                android:textColor="#1A1A1A"
+                android:textColor="@color/textColor"
                 android:maxLines="2"
                 android:ellipsize="end"/>
 
@@ -51,17 +53,17 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="#1A1A1A"/>
+                    android:textColor="#288B57"/>
 
                 <TextView
                     android:id="@+id/tv_admin_book_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="11sp"
-                    android:textColor="@color/white"
-                    android:background="@color/primary"
-                    android:paddingStart="6dp"
-                    android:paddingEnd="6dp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/condition_badge"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:layout_marginStart="8dp"/>
@@ -78,14 +80,36 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_remove_listing"
-            android:layout_width="72dp"
-            android:layout_height="36dp"
-            android:text="Remove"
-            android:textSize="11sp"
-            android:backgroundTint="#FF3B30"
-            android:textColor="@color/white"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp">
+
+            <Button
+                android:id="@+id/btn_edit_listing"
+                android:layout_width="72dp"
+                android:layout_height="36dp"
+                android:text="Edit"
+                android:textSize="11sp"
+                android:backgroundTint="#288B57"
+                android:textColor="#FFFFFF"
+                android:stateListAnimator="@null"
+                app:cornerRadius="18dp"/>
+
+            <Button
+                android:id="@+id/btn_remove_listing"
+                android:layout_width="72dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="4dp"
+                android:text="Remove"
+                android:textSize="11sp"
+                android:backgroundTint="#FF3B30"
+                android:textColor="#FFFFFF"
+                android:stateListAnimator="@null"
+                app:cornerRadius="18dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

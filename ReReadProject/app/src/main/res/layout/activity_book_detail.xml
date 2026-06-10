@@ -10,9 +10,14 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
+        android:background="@color/background"
         app:navigationIcon="@drawable/ic_back"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/textColor"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_light"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,136 +26,176 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:orientation="vertical">
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/gray_light"
-                android:layout_marginBottom="16dp">
+                android:layout_height="220dp"
+                android:background="@color/gray_light">
+
+                <ImageView
+                    android:id="@+id/iv_detail_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"/>
+
                 <TextView
+                    android:id="@+id/tv_detail_placeholder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="📖"
-                    android:textSize="64sp"/>
+                    android:textSize="72sp"/>
+
             </FrameLayout>
 
-            <TextView
-                android:id="@+id/tv_detail_title"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@color/textColor"/>
+                android:orientation="vertical"
+                android:background="@color/background"
+                android:padding="20dp">
 
-            <TextView
-                android:id="@+id/tv_detail_author"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/textColor"
-                android:layout_marginTop="4dp"/>
+                <TextView
+                    android:id="@+id/tv_detail_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#288B57"/>
 
-            <TextView
-                android:id="@+id/tv_detail_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:textColor="@color/textColor"
-                android:layout_marginTop="12dp"/>
+                <TextView
+                    android:id="@+id/tv_detail_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"
+                    android:layout_marginTop="4dp"/>
 
-            <TextView
-                android:id="@+id/tv_detail_condition"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/textColor"
-                android:layout_marginTop="6dp"/>
+                <TextView
+                    android:id="@+id/tv_detail_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_medium"
+                    android:layout_marginTop="4dp"/>
 
-            <TextView
-                android:id="@+id/tv_detail_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/textColor"
-                android:layout_marginTop="4dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray_light"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"/>
+                    <TextView
+                        android:id="@+id/tv_detail_condition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:background="@drawable/condition_badge"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/textColor"/>
+                    <TextView
+                        android:id="@+id/tv_detail_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="#288B57"
+                        android:background="@color/gray_light"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_marginStart="8dp"/>
 
-            <TextView
-                android:id="@+id/tv_detail_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/textColor"
-                android:layout_marginTop="6dp"
-                android:lineSpacingMultiplier="1.4"/>
+                </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray_light"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:id="@+id/tv_detail_seller"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/textColor"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="About this book"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/textColor"/>
 
-            <Button
-                android:id="@+id/btn_add_to_cart"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp"
-                android:text="Add to Cart"
-                android:textSize="16sp"
-                android:backgroundTint="#1A1A1A"
-                android:textColor="@color/buttonTextColor"/>
+                <TextView
+                    android:id="@+id/tv_detail_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_medium"
+                    android:layout_marginTop="6dp"
+                    android:lineSpacingMultiplier="1.5"/>
 
-            <Button
-                android:id="@+id/btn_message_seller"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginBottom="16dp"
-                android:text="Message Seller"
-                android:textSize="16sp"
-                android:backgroundTint="#007AFF"
-                android:textColor="@color/white"
-                android:visibility="gone"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_light"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:id="@+id/tv_switch_to_buyer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Switch to Buyer mode to purchase this book"
-                android:textSize="14sp"
-                android:textColor="#FF9500"
-                android:gravity="center"
-                android:padding="16dp"
-                android:background="#FFF3E0"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tv_detail_seller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/gray_medium"/>
+
+                <Button
+                    android:id="@+id/btn_add_to_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="24dp"
+                    android:text="🛒  Add to Cart"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#288B57"
+                    android:textColor="#FFFFFF"
+                    android:stateListAnimator="@null"
+                    app:cornerRadius="27dp"/>
+
+                <Button
+                    android:id="@+id/btn_message_seller"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="💬  Message Seller"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/gray_light"
+                    android:textColor="@color/textColor"
+                    android:stateListAnimator="@null"
+                    app:cornerRadius="27dp"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/tv_switch_to_buyer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Switch to Buyer mode to purchase this book"
+                    android:textSize="14sp"
+                    android:textColor="#288B57"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:background="@color/gray_light"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

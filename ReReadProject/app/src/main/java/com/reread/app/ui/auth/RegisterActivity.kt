@@ -7,8 +7,8 @@ import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.reread.app.R
-import com.reread.app.ui.home.HomeActivity
 import com.reread.app.viewmodel.AuthViewModel
+
 class RegisterActivity : AppCompatActivity() {
 
     private val viewModel: AuthViewModel by viewModels()
@@ -35,7 +35,6 @@ class RegisterActivity : AppCompatActivity() {
         tvGoToLogin       = findViewById(R.id.tv_go_to_login)
         progressBar       = findViewById(R.id.progress_bar)
 
-        // Role picker: buyer / seller
         val roles = arrayOf("Buyer", "Seller")
         spinnerRole.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, roles)
 
@@ -63,7 +62,7 @@ class RegisterActivity : AppCompatActivity() {
                 is AuthViewModel.RegisterState.Success -> {
                     setLoading(false)
                     Toast.makeText(this, "Account created! Welcome, ${state.user.username}!", Toast.LENGTH_SHORT).show()
-                    navigateByRole(state.user.role)
+                    navigateToGenreSelection()
                     viewModel.resetRegisterState()
                 }
                 is AuthViewModel.RegisterState.Error -> {
@@ -80,8 +79,8 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.isEnabled = !loading
     }
 
-    private fun navigateByRole(role: String) {
-        val intent = Intent(this, HomeActivity::class.java)
+    private fun navigateToGenreSelection() {
+        val intent = Intent(this, GenreSelectionActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()

@@ -1,6 +1,9 @@
 package com.reread.app.ui.cart
 
 import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,7 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.reread.app.R
@@ -23,15 +25,37 @@ class CartActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnCheckout: Button
 
+    private fun isDarkMode(): Boolean {
+        return resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (isDarkMode()) {
+            window.statusBarColor = Color.parseColor("#1A1A1A")
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = 0
+        } else {
+            window.statusBarColor = Color.WHITE
+            @Suppress("DEPRECATION")
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+
         setContentView(R.layout.activity_cart)
+
+        val toolbarColor = if (isDarkMode()) Color.parseColor("#1A1A1A") else Color.WHITE
+        val textColor    = if (isDarkMode()) Color.WHITE else Color.parseColor("#333333")
+        val iconColor    = if (isDarkMode()) Color.WHITE else Color.parseColor("#1A1A1A")
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "My Cart"
-        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(toolbarColor))
+        toolbar.setTitleTextColor(textColor)
+        toolbar.navigationIcon?.setTint(iconColor)
         toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
         tvTotal      = findViewById(R.id.tv_total)
@@ -62,9 +86,9 @@ class CartActivity : AppCompatActivity() {
     private fun refreshCart() {
         val items = CartManager.getItems()
         adapter.submitList(items)
-        tvTotal.text = "Total: \$${String.format("%.2f", CartManager.getTotal())}"
-        tvEmpty.visibility = if (items.isEmpty()) View.VISIBLE else View.GONE
+        tvTotal.text = "\$${String.format("%.2f", CartManager.getTotal())}"
+        tvEmpty.visibility      = if (items.isEmpty()) View.VISIBLE else View.GONE
         recyclerView.visibility = if (items.isEmpty()) View.GONE else View.VISIBLE
-        btnCheckout.isEnabled = items.isNotEmpty()
+        btnCheckout.isEnabled   = items.isNotEmpty()
     }
 }

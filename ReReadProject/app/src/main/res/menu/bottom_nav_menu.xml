@@ -5,8 +5,12 @@
         android:icon="@drawable/ic_home"
         android:title="Home"/>
     <item
+        android:id="@+id/nav_inbox"
+        android:icon="@drawable/ic_inbox"
+        android:title="Inbox"/>
+    <item
         android:id="@+id/nav_listings"
-        android:icon="@drawable/ic_collection"
+        android:icon="@drawable/ic_listings"
         android:title="My Listings"/>
     <item
         android:id="@+id/nav_account"

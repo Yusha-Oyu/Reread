@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ReRead" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#288B57</item>
+        <item name="colorPrimaryVariant">#1F6F45</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#288B57</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSurface">#FF1E1E1E</item>
+        <item name="colorOnSurface">#FFEEEEEE</item>
+        <item name="colorOnBackground">#FFEEEEEE</item>
+        <item name="cardBackgroundColor">@color/background</item>
+        <item name="android:textColorPrimary">#FFEEEEEE</item>
+        <item name="android:textColorHint">#FFAAAAAA</item>
+        <item name="android:windowBackground">#FF1A1A1A</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:statusBarColor">#FF1A1A1A</item>
+    </style>
+
+    <style name="Theme.ReRead.NoActionBar" parent="Theme.ReRead">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+</resources>

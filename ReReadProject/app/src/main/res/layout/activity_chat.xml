@@ -2,14 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"/>
+        android:background="@color/background"
+        android:elevation="0dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_light"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_messages"
@@ -17,13 +23,16 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="8dp"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false"
+        android:background="@color/gray_light"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
+        android:padding="10dp"
+        android:background="@color/background"
+        android:gravity="center_vertical"
         android:elevation="4dp">
 
         <EditText
@@ -34,16 +43,18 @@
             android:hint="Type a message..."
             android:inputType="textMultiLine"
             android:maxLines="4"
-            android:padding="8dp"/>
+            android:padding="10dp"
+            android:background="@drawable/search_background"
+            android:layout_marginEnd="8dp"/>
 
         <ImageButton
             android:id="@+id/btn_send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_send"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="8dp"
-            android:layout_gravity="bottom"/>
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_send"
+            android:background="#288B57"
+            android:tint="#FFFFFF"
+            android:padding="10dp"/>
 
     </LinearLayout>
 

@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="12dp"
+        android:background="@color/background"
         android:gravity="center_vertical">
 
         <TextView
@@ -61,19 +63,20 @@
                     android:layout_weight="1"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textColor="@color/textColor"/>
+                    android:textColor="#288B57"/>
 
                 <TextView
                     android:id="@+id/tv_my_listing_condition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
-                    android:textColor="@color/gray_medium"
-                    android:background="@color/labelColor"
+                    android:textColor="@color/textColor"
+                    android:background="@color/gray_light"
                     android:paddingStart="6dp"
                     android:paddingEnd="6dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"/>
+
             </LinearLayout>
 
             <TextView
@@ -81,10 +84,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
-                android:textColor="@color/white"
-                android:background="@color/primary"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
+                android:textColor="#288B57"
+                android:background="@color/gray_light"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:layout_marginTop="4dp"/>
@@ -103,20 +106,22 @@
                 android:layout_height="36dp"
                 android:text="Edit"
                 android:textSize="11sp"
-                android:backgroundTint="#007AFF"
-                android:textColor="@color/white"/>
+                android:backgroundTint="#288B57"
+                android:textColor="#FFFFFF"
+                android:stateListAnimator="@null"
+                app:cornerRadius="18dp"/>
 
             <Button
                 android:id="@+id/btn_delete_listing"
                 android:layout_width="64dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="4dp"
-                android:paddingStart="0dp"
-                android:paddingEnd="0dp"
                 android:text="Delete"
                 android:textSize="11sp"
                 android:backgroundTint="#FF3B30"
-                android:textColor="@color/white"/>
+                android:textColor="#FFFFFF"
+                android:stateListAnimator="@null"
+                app:cornerRadius="18dp"/>
 
         </LinearLayout>
 

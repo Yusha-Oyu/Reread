@@ -3,6 +3,7 @@
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32"/>
 
@@ -27,12 +28,19 @@
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:theme="@style/Theme.ReRead.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".ui.auth.RegisterActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:theme="@style/Theme.ReRead.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".ui.auth.GenreSelectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ReRead.NoActionBar"/>
 
         <activity
             android:name=".ui.home.HomeActivity"
@@ -62,7 +70,8 @@
         <activity
             android:name=".ui.checkout.CheckoutActivity"
             android:exported="false"
-            android:theme="@style/Theme.ReRead.NoActionBar"/>
+            android:theme="@style/Theme.ReRead.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".ui.checkout.OrderConfirmationActivity"
@@ -82,7 +91,8 @@
         <activity
             android:name=".ui.listings.AddListingActivity"
             android:exported="false"
-            android:theme="@style/Theme.ReRead.NoActionBar"/>
+            android:theme="@style/Theme.ReRead.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".ui.messaging.InboxActivity"
@@ -92,7 +102,8 @@
         <activity
             android:name=".ui.messaging.ChatActivity"
             android:exported="false"
-            android:theme="@style/Theme.ReRead.NoActionBar"/>
+            android:theme="@style/Theme.ReRead.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

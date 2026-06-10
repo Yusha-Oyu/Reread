@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/background">
 
     <TextView
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
         android:text="Admin Panel"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#1A1A1A"
+        android:textColor="@color/textColor"
         android:padding="16dp"/>
 
     <!-- Stats -->
@@ -30,7 +30,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:padding="8dp"
-            android:background="#F5F5F5"
+            android:background="@color/gray_light"
             android:layout_marginEnd="4dp">
             <TextView
                 android:id="@+id/tv_stat_users"
@@ -39,7 +39,7 @@
                 android:text="0"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#1A1A1A"/>
+                android:textColor="@color/textColor"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:padding="8dp"
-            android:background="#F5F5F5"
+            android:background="@color/gray_light"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp">
             <TextView
@@ -65,7 +65,7 @@
                 android:text="0"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#1A1A1A"/>
+                android:textColor="@color/textColor"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:padding="8dp"
-            android:background="#F5F5F5"
+            android:background="@color/gray_light"
             android:layout_marginStart="4dp">
             <TextView
                 android:id="@+id/tv_stat_orders"
@@ -90,7 +90,7 @@
                 android:text="0"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#1A1A1A"/>
+                android:textColor="@color/textColor"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,6 +117,7 @@
             android:text="Users"
             android:gravity="center"
             android:textSize="14sp"
+            android:textColor="@color/textColor"
             android:layout_marginEnd="6dp"/>
 
         <TextView
@@ -127,7 +128,9 @@
             android:text="Listings"
             android:gravity="center"
             android:textSize="14sp"
+            android:textColor="@color/textColor"
             android:layout_marginStart="6dp"/>
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,5 +1,6 @@
 package com.reread.app.ui.admin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,6 +43,18 @@ class AdminBottomSheet : BottomSheetDialogFragment() {
             rvListings.layoutManager = LinearLayoutManager(requireContext())
             rvListings.adapter = AdminListingsAdapter(
                 listings = repo.getAllListings().toMutableList(),
+                onEdit = { book ->
+                    val intent = Intent(requireContext(), com.reread.app.ui.listings.AddListingActivity::class.java)
+                    intent.putExtra("edit_book_id",     book.id)
+                    intent.putExtra("edit_title",       book.title)
+                    intent.putExtra("edit_author",      book.author)
+                    intent.putExtra("edit_price",       book.price)
+                    intent.putExtra("edit_condition",   book.condition)
+                    intent.putExtra("edit_category",    book.category)
+                    intent.putExtra("edit_description", book.description)
+                    intent.putExtra("edit_image",       book.imagePath)
+                    startActivity(intent)
+                },
                 onDelete = { book -> repo.deleteListing(book.id); setupListings() }
             )
         }

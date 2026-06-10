@@ -1,32 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"/>
+        android:background="@color/background"
+        app:titleTextColor="@color/textColor"
+        android:elevation="0dp"/>
 
-    <TextView
-        android:id="@+id/tv_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No conversations yet"
-        android:textSize="16sp"
-        android:textColor="@android:color/darker_gray"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
-        android:visibility="gone"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_conversations"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:clipToPadding="false"/>
+        android:layout_height="1dp"
+        android:background="@color/gray_light"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/background">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_conversations"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:clipToPadding="false"/>
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="💬  No conversations yet"
+            android:textSize="16sp"
+            android:textColor="@color/gray_medium"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        app:backgroundTint="@null"
+        app:itemIconTint="@drawable/bottom_nav_color"
+        app:itemTextColor="@drawable/bottom_nav_color"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@drawable/bottom_nav_bubble"
+        app:menu="@menu/bottom_nav_menu"
+        android:elevation="8dp"/>
 
 </LinearLayout>

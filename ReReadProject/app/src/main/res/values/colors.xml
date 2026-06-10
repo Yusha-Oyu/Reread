@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#288B57</color>
+    <color name="colorPrimaryVariant">#1F6F45</color>
+    <color name="colorSecondary">#288B57</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray_light">#FFF5F5F5</color>
-    <color name="gray_medium">#FF666666</color>
-    <color name="primary">#FF1A1A1A</color>
-    <color name="chip_text_selected">#FFFFFF</color>
-    <color name="chip_text_unselected">#1A1A1A</color>
-    <color name="background">#FFFFFF</color>
-    <color name="textColor">#FF000000</color>
+    <color name="gray_medium">#FF888888</color>
+    <color name="primary">#FF288B57</color>
+    <color name="colorSurface">#FFFFFFFF</color>
+    <color name="colorOnSurface">#FF333333</color>
+    <color name="chip_text_selected">#FFFFFFFF</color>
+    <color name="chip_text_unselected">#FFFFFFFF</color>
+    <color name="chip_background">#FF333333</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="textColor">#FF333333</color>
     <color name="buttonTextColor">#FFFFFFFF</color>
-    <color name="labelColor">#FFF5F5F5</color>
-    <color name="searchBarColor">#FFFFFFFF</color>
-    <color name="navIconColor">#FF000000</color>
+    <color name="searchBarColor">#FFF0F0F0</color>
+    <color name="navIconColor">#FF333333</color>
+    <color name="labelColor">#FF888888</color>
 </resources>
